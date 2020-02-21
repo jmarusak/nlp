@@ -413,17 +413,17 @@ def print_corpus_summary(corpus_name, summary):
 # developing and testing on subset of corpus (files with *a.json)
 DOC_PATTERN_SUBSET = r'(?!\.)[a-z_\s]+/[a-f0-9]+a\.json'
 
-raw_corpus = HTMLCorpusReader(root='../Raw_Corpus_Sample/', fileids=DOC_PATTERN_SUBSET)
+raw_corpus = HTMLCorpusReader(root='../../corpora/Raw_Corpus_Sample/', fileids=DOC_PATTERN_SUBSET)
 
 """## Preprocess Raw Corpus to Pickled Corpus"""
 
 # cleared output of this notebook cell to improve readability of overall code
-preprocess = Preprocessor(raw_corpus, target='../Pickled_Corpus_Sample')
+preprocess = Preprocessor(raw_corpus, target='../../corpora/Pickled_Corpus_Sample')
 preprocess.transform()
 
 """##Instantiate Pickled Corpus Reader"""
 
-pickled_corpus = PickledCorpusReader(root='../Pickled_Corpus_Sample')
+pickled_corpus = PickledCorpusReader(root='../../corpora/Pickled_Corpus_Sample')
 
 pickled_corpus_summary = pickled_corpus.describe()
 print_corpus_summary("Pickled Corpus", pickled_corpus_summary)
