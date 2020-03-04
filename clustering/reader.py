@@ -25,6 +25,10 @@ class CorpusReader():
 
 if __name__ == '__main__':
     reader = CorpusReader()
+
+    ids = reader.ids()
+    for i in range(10):
+        print(ids[i])
     
     docs = reader.docs([23890098, 31186339])
     for doc in docs:

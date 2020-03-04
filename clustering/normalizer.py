@@ -43,8 +43,7 @@ class TextNormalizer(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, documents):
-        for document in documents:
-            yield self.normalize(document)
+        return [' '.join(self.normalize(document)) for document in documents]
 
 if __name__ == '__main__':
     reader = CorpusReader()
@@ -52,6 +51,6 @@ if __name__ == '__main__':
     normalizer = TextNormalizer()
     docs = normalizer.fit_transform(reader.docs([23890098, 31186339]))
 
-    for i in range(2):
+    for doc in docs:
         print()
-        print(next(docs))    
+        print(doc)
