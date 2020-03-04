@@ -33,4 +33,3 @@ if __name__ == '__main__':
 	for X_train, X_test, y_train, y_test in loader:
 		print('Fold: {} y_test: {} y_train: {}'.format(fold, y_test, y_train))
 		fold += 1
-		
