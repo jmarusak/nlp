@@ -1,22 +1,15 @@
+from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.cluster import AgglomerativeClustering
 
-from reader import CorpusReader
-from normalizer import TextNormalizer
-from vectorizer import OneHotVectorizer
+N_CLUSTERS=20
 
-N_CLUSTERS = 3
+class HierarchicalClusterer(BaseEstimator, TransformerMixin):
+    def __init__(self):
+        self.clusterer = AgglomerativeClustering(n_clusters=N_CLUSTERS)
 
-if __name__ == '__main__':
+    def fit(self, documents, labels=None):
+        return self
 
-    reader = CorpusReader()
-    normalizer = TextNormalizer()
-    docs = normalizer.fit_transform(reader.docs([23890098, 31186339, 24225279, 20532852]))
-        
-    vectorizer = OneHotVectorizer()
-    docs = vectorizer.fit_transform(docs)
-    
-    clusterer = AgglomerativeClustering(n_clusters=N_CLUSTERS)
-    clusterer.fit_predict(docs)
-    labels = clusterer.labels_
-    
-    print(labels)
+    def transform(self, documents):
+        clusters = self.clusterer.fit_predict(documents)
+        return clusters
