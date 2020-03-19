@@ -118,12 +118,12 @@ class PickledCorpusReader(CategorizedCorpusReader, CorpusReader):
         }
 
 if __name__ == '__main__':
-	pickled_corpus = PickledCorpusReader(root='../../corpora/politics_pickled')
+	corpus = PickledCorpusReader(root='../../corpora/politics_pickled')
 
-	pickled_corpus_summary = pickled_corpus.describe()
+	corpus_summary = corpus.describe()
 	print("Picked Corpus Summary:")
-	for item_name, item_value in pickled_corpus_summary.items():
+	for item_name, item_value in corpus_summary.items():
 		print("  {}: {:,}".format(item_name, item_value))
 
-	docs = pickled_corpus.docs()
+	docs = corpus.docs()
 	print(next(docs))
